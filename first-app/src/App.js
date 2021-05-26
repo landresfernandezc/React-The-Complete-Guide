@@ -1,8 +1,11 @@
 
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
+
+import React, { useState } from "react";
 const App=()=> {
-  const expenses = [
+    
+  const [expenses, setExpenses] = useState([
     {
       id: 'e1',
       title: 'Toilet Paper',
@@ -22,16 +25,35 @@ const App=()=> {
       amount: 450,
       date: new Date(2021, 5, 12),
     },
-  ];
+  ]);
   const addExpenseHandler=expense=>{
-    expenses.push(expense)
+    
+    setExpenses(expenses.push(expense))
+    console.log(expenses)
+  }
+  const filterExpensesHandler=filter=>{
+    const date=new Date(2021, 5, 12);
+    console.log(date.getFullYear())
+    console.log(filter)
+    console.log(expenses.filter(function (expense) {
+      return expense.date.getFullYear().toString() === filter;
+    }))
+    setExpenses(
+      expenses.filter(function (expense) {
+        return expense.date.getFullYear().toString() === filter;
+      })
+    )
+    /*
+    setExpenses(expenses.filter(function (expense) {
+      return expense.date.getYear() == filter;
+    }))*/
     console.log(expenses)
   }
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler}/>
       <h2>Let's get started!</h2>
-      <Expenses expenses={expenses}/>
+      <Expenses onFilterExpensesHandler={filterExpensesHandler} expenses={expenses}/>
     </div>
   );
 }
