@@ -19,7 +19,6 @@ const NewTask = (props) => {
       body: { text: taskText }
     },createdTask.bind(null,taskText));
   };
-
   return (
     <Section>
       <TaskForm onEnterTask={enterTaskHandler} loading={isLoading} />
