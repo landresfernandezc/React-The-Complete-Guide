@@ -7,7 +7,7 @@ import CartItem from './CartItem';
 
 const Cart = (props) => {
 const isToggle = useSelector(state => state.cartbutton.isToggle)
-const listItems = useSelector(state => state.cart.listItems)
+const listItems = useSelector(state => state.cart.items)
   return (
     <Fragment>
       {isToggle && <Card className={classes.cart}>
