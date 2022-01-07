@@ -1,13 +1,20 @@
 import React from "react";
 import "./Modal.css";
 import Transition from "react-transition-group/Transition";
+import { CSSTransition } from "react-transition-group";
 const animationTiming = {
-  enter:400,
-  exit:1000
-}
+  enter: 400,
+  exit: 1000,
+};
 const modal = (props) => {
   return (
-    <Transition mountOnEnter unmountOnExit in={props.show} timeout={animationTiming}>
+    <CSSTransition
+      mountOnEnter
+      unmountOnExit
+      in={props.show}
+      timeout={animationTiming}
+      classNames="fade-slide"
+    >
       {(state) => {
         const cssClasses = [
           "Modal",
@@ -26,7 +33,7 @@ const modal = (props) => {
           </div>
         );
       }}
-    </Transition>
+    </CSSTransition>
   );
 };
 
